@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h1 class="header-title">THE PLANETS</h1>
+        <button class="burger"><img src="assets/icons/icon-burger.svg" alt="burger icon"></button>
+        <ul class="burger-bts-list">
+            <li class="planetss-2"><div class="planets-list-circle mercury"></div><a class="planets-link"  href="#">MERCURY</a> </li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle venus"></div><a class="planets-link"  href="#">VENUS</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle earth"></div><a class="planets-link"  href="#">EARTH</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle mars"></div><a class="planets-link"  href="#">MARS</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle jupiter"></div><a class="planets-link"  href="#">JUPITER</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle saturn"></div><a  class="planets-link" href="#">SATURN</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle uranus"></div><a class="planets-link"  href="#">URANUS</a></li>
+            <hr class="header-hr">
+            <li class="planetss-2"><div class="planets-list-circle neptune"></div><a class="planets-link" href="#">NEPTUNE</a></li>
+            <hr class="header-hr">
+        </ul>
+        <ul class="planets-list">
+            <li class="planetss active">MERCURY</li>
+            <li class="planetss">VENUS</li>
+            <li class="planetss">EARTH</li>
+            <li class="planetss">MARS</li>
+            <li class="planetss">JUPITER</li>
+            <li class="planetss">SATURN</li>
+            <li class="planetss">URANUS</li>
+            <li class="planetss">NEPTUNE</li>
+        </ul>
+    </header>
+    <hr>    
+    <div class="abs-everything">
+    <div class="info-bts-list">
+        <ul>
+            <button class="info-bts"><b><li>OVERVIEW</li></button></b>
+            <button class="info-bts"><b><li>STRUCTURE</li></button></b>
+            <button class="info-bts"><b><li>SURFACE</li></button></b>
+        </ul>
+</div>
+<hr >
+    <!-- /header -->
+    <!-- main -->
+    <main>
+    <div class="main-img">
+        <div id="planet-img"></div>
+    </div> 
+    <div class="everything">
+     <div class="stuff">
+        <div id="planet-description"></div>
+        <span class="wiki-source">source: <a href="#" class="wiki">wikipedia</a></span>
+     </div>
+    <div class="some-info">
+        <div>
+            <button id="overview-btn" class="information-buttons"><span class="numbers"><b>01</span> OVERVIEW</b></button>
+            <button id="structure-btn" class="information-buttons"><span class="numbers"><b>02</span> INTERNAL STRUCTURE</b></button>
+            <button id="geology-btn" class="information-buttons"><span class="numbers"><b>03</span> SURFACE GEOLOGY</b></button>
+        </div>
+</div>
+</div>  
+  </main>
+  <!-- main -->
+  <!-- last-div -->
+<div class="last-div">
+    <div class="last-container"><b><span class="last-names">ROTATION TIME</span></b><span id="rotation"></span></div>
+    <div class="last-container"><b><span class="last-names">REVOLUTION TIME</span></b><span id="revolution"></span></div>
+    <div class="last-container"><b><span class="last-names">RADIUS</span></b><span id="radius"></span></div>
+    <div class="last-container"><b><span class="last-names">AVERAGE TEMP.</span></b><span id="temperature"></span></div>
+</div>
+</div>
+</body>
+</html>
