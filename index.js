@@ -1,8 +1,5 @@
 'use strict'
-//1. გავაკეთო ზემოთ სახელთან რომ მოძრაობს ეგ სწორად
-//2. ბურგერიდან გადადიოდეს მაგის გვერდებზე 
-//3. ვიკიპედიის ლინკი გავასწორო და გდაიოდეს სწორად
-//4. ქვემოთ რო ღილაკებია ეგენი იასამნისფრდებოდეს რომელსაც დავაჭერ
+
 
 const API_URL = "https://planets-api.vercel.app/api/v1/planets/"
 const WIKIPEDIA_API_URL =  "https://en.wikipedia.org/wiki/"
@@ -18,13 +15,16 @@ const temperature = document.querySelector("#temperature")
 const burger = document.querySelector(".burger")
 const burgerBtsList = document.querySelector(".burger-bts-list")
 const infoButtons = document.querySelectorAll(".information-buttons")
-const structureBtn = document.querySelector("#structure-btn")
 const overviewBtn = document.querySelector("#overview-btn")
+const structureBtn = document.querySelector("#structure-btn")
 const geologyBtn = document.querySelector("#geology-btn")
 const body = document.querySelector("body")
 const header = document.querySelector("header")
-const planetsLink = document.querySelectorAll(".planets-link")
 const wikipedia = document.querySelector(".wiki")
+const planetsList = document.querySelector(".planets-list")
+const selectedDivs = document.querySelectorAll(".selected-divs")
+const planetsBurger = document.querySelectorAll (".planetss-2")
+const planetName = document.querySelector(".planet-name")
 
 
 const getPlanets = async (user) => {
@@ -39,23 +39,23 @@ const getPlanets = async (user) => {
         planetImg.innerHTML =`
         <img class="planet-img" src = "${data.images.planet}" alt = "image of the planet" />`
         planetDescription.innerHTML = `
-        <h1 class="planet-name">"${data.name}" </h1>
-        <p class="paragraph"> "${data.overview.content}" </p>`
+        <h1 class="planet-name">${data.name}</h1>
+        <p class="paragraph">${data.overview.content}</p>`
 
         overviewBtn.addEventListener ("click", () => {
             planetImg.innerHTML = `
         <img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>`
         planetDescription.innerHTML = `
-        <h1 class="planet-name">"${data.name}" </h1>
-        <p class="paragraph">" ${data.overview.content}" <h1>`
+        <h1 class="planet-name">${data.name} </h1>
+        <p class="paragraph"> ${data.overview.content} <h1>`
         })
 
          structureBtn.addEventListener ("click", () => {
         planetImg.innerHTML = `
         <img class="planet-img" src="${data.images.internal}" alt = "image of the planet"/>`
         planetDescription.innerHTML = `
-        <h1 class="planet-name">"${data.name}" </h1>
-        <p class="paragraph">" ${data.structure.content}" <h1>`
+        <h1 class="planet-name">${data.name}</h1>
+        <p class="paragraph">${data.structure.content} <h1>`
          })
 
          geologyBtn.addEventListener("click", () => {
@@ -63,16 +63,31 @@ const getPlanets = async (user) => {
             <div><img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>
             <img class="geology-img" src="${data.images.geology}" alt = "image of the planet"/></div>`
             planetDescription.innerHTML = `
-            <h1 class="planet-name">"${data.name}" </h1>
-            <p class="paragraph">" ${data.geology.content}" <h1>`
+            <h1 class="planet-name">${data.name}</h1>
+            <p class="paragraph">${data.geology.content}<h1>`
          })
 
-         for(let i = 0; i < planetsLink.length; i++) {
-            planetsLink[i].addEventListener ("click", () => {
-                planetsLink[i].textContent = data.name
-                console.log(planetsLink[i])
+         for(let i=0; i< infoButtons.length; i++) { 
+            infoButtons[i].addEventListener ("click",  () => {
+                document.querySelector(".clicked")?.classList.remove("clicked")
+                infoButtons[i].classList.add("clicked")
+
+                wikipedia.addEventListener ('click', () => {
+                    wikipedia.href = data.overview.source
+                    
+                    if (infoButtons[i].classList.contains("clicked") && infoButtons[i].textContent.includes("OVERVIEW") ) {
+                        wikipedia.href = data.overview.source
+                    } else if (infoButtons[i].classList.contains("clicked") && infoButtons[i].textContent.includes("INTERNAL STRUCTURE")) {
+                        wikipedia.href = data.structure.source
+                    } else if (infoButtons[i].classList.contains("clicked") && infoButtons[i].textContent.includes("SURFACE GEOLOGY")) {
+                        wikipedia.href = data.geology.source
+                    }
+                 })
             })
         }
+
+
+ 
         } 
          
          catch (error) {
@@ -85,9 +100,30 @@ getPlanets("mercury")
 
 for (let i=0; i<planets.length; i++) {
     planets[i].addEventListener('click', () => {
-        getPlanets(planets[i].textContent)
-                    })
-}
+        getPlanets(planets[i].textContent) 
+        document.querySelector(".active")?.classList.remove("active")
+        planets[i].classList.add("active")
+        if (planets[i].classList.contains("active") && planets[i].textContent === "MERCURY") {
+            planets[i].style.borderTopColor = "rgb(65, 158, 187)" 
+        } else if (planets[i].classList.contains("active") && planets[i].textContent === "VENUS") {
+            planets[i].style.borderTopColor = "rgb(247, 204, 127)"
+        } else if (planets[i].classList.contains("active") && planets[i].textContent === "EARTH") {
+            planets[i].style.borderTopColor = "rgb(84, 91, 254)"
+        } else if (planets[i].classList.contains("active") && planets[i].textContent === "MARS") {
+            planets[i].style.borderTopColor ="rgb(255, 106, 69)"
+        }else if (planets[i].classList.contains("active") && planets[i].textContent === "JUPITER") {
+            planets[i].style.borderTopColor =  "rgb(236, 173, 122)"
+        }else if (planets[i].classList.contains("active") && planets[i].textContent === "SATURN") {
+            planets[i].style.borderTopColor = "rgb(252, 203, 107)"
+        }else if (planets[i].classList.contains("active") && planets[i].textContent === "URANUS") {
+            planets[i].style.borderTopColor =  "rgb(101, 240, 213)"
+        }else if (planets[i].classList.contains("active") && planets[i].textContent === "NEPTUNE") {
+            planets[i].style.borderTopColor ="rgb(73, 126, 250)"
+        } 
+                    }
+        )
+                    }
+
 
 
 
@@ -103,21 +139,15 @@ const headerTitle = document.querySelector(".header-title")
                 burger.style.display = "flex"
                 burgerBtsList.style.display="block"
                 body.style.backgroundImage = "none"
-                header.style.backgroundImage = "url('../assets/background-stars.svg')"
+                header.style.backgroundImage = "url('assets/background-stars.svg')"
+                burger.style.opacity = "0.5"
             } else {
                 absEverything.style.display = "block"
                 burgerBtsList.style.display="none"
-                body.style.backgroundImage = "url('../assets/background-stars.svg')"
+                body.style.backgroundImage = "url('assets/background-stars.svg')"
+                header.style.backgroundImage = "url('assets/background-stars.svg')"
+                burger.style.opacity = "1"
              }
         })
 
-for(let i=0; i< infoButtons.length; i++) { 
-    infoButtons[i].addEventListener ("click",  () => {
-        infoButtons[i].classList.toggle("clicked")
-        if(infoButtons[i].classList.contains("clicked")){
-            infoButtons[i].style.backgroundColor = "rgb(84, 91, 254)"
-        } else if (infoButtons[i].style.backgroundColor = "rgb(84, 91, 254)") {
-            infoButtons[i].style.backgroundColor = "unset"
-        }
-    })
-}
+

@@ -24,6 +24,9 @@
             width: 270px;
             height: 270px;
         }
+        .information-buttons:focus {
+            background-color: rgb(65, 158, 187); 
+        }
         .some-info {
             display: flex;
         }
@@ -75,13 +78,17 @@
         flex-direction: row;
         margin: 0 41px 0 32px;
     }
+    .planetss.active {
+        border-top: 4px solid rgb(65, 158, 187);
+        }
     .planet-img {
         width: 290px;
         height: 290px;
         margin-left: 150px;
     }
-    .planetss {
-        margin-top: 0;
+    .selected-divs {
+        display: flex;
+        background-color: none;
     }
     .planets-list {
         margin-top: 0;

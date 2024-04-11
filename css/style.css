@@ -28,9 +28,17 @@ header {
     margin: 2px 0 20px 24px;
     color: white;
 }
+.planetss.active {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color:  rgb(65, 158, 187);
+    border-top: none;
+}
 .planetss {
     padding-top: 43px;
-    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .header-hr {
     margin:  0 24px 22px 24px;
@@ -60,6 +68,8 @@ header {
 .burger-bts-list.show {
     display: block;
 } 
+/*  */
+/*  */
 .planets-list-circle.mercury {
     background-color: rgb(65, 158, 187);
 }
@@ -142,7 +152,6 @@ header {
     font-size: 15px;
     font-family: "League Spartan", sans-serif;
     line-height: 22px;
-    text-align: justify; 
 }
 .wiki-source, .wiki {
     color: rgba(255, 255, 255, 0.5);
@@ -164,7 +173,12 @@ header {
     font-size: 12px;
     color: white;
 }
+.information-buttons.clicked {
+    background-color: gray;
+}
+
 .information-buttons:hover{background-color:gray}
+
 
 /* last div */
 .last-div {
@@ -196,16 +210,4 @@ header {
     font-size: 20px;
     font-family: "Antonio", sans-serif;  
 }
-
-.border {
-    border-top: 4px turquoise solid;
-    padding-top: 39px;
-}
-
-.active {
-    border-top: 4px turquoise solid;
-    padding-top: 39px;
-} 
-
-
 
