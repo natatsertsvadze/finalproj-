@@ -68,8 +68,6 @@ header {
 .burger-bts-list.show {
     display: block;
 } 
-/*  */
-/*  */
 .planets-list-circle.mercury {
     background-color: rgb(65, 158, 187);
 }
@@ -102,7 +100,6 @@ header {
     flex-direction: column;
     font-family: "League Spartan", sans-serif;
     font-size: 17px;
-    font-weight: bold;
     color: white;
 }
 .info-bts {
@@ -110,6 +107,8 @@ header {
     opacity: .5;
     list-style: none;
     margin: 24px 20px 24px 20px;
+    justify-content: space-between;
+    font-weight: 700;
 }
 /* /header */
 /* main */
@@ -145,6 +144,7 @@ header {
     font-family: "Antonio", sans-serif;
     color: #fff;
     text-transform: uppercase;
+    font-weight: normal;
 }
 .paragraph {
     margin: 16px 24px 32px 0;
@@ -172,13 +172,13 @@ header {
     font-family: "League Spartan", sans-serif;
     font-size: 12px;
     color: white;
+    background-color: none;
 }
-.information-buttons.clicked {
+/* .information-buttons.clicked {
     background-color: gray;
-}
+} */
 
 .information-buttons:hover{background-color:gray}
-
 
 /* last div */
 .last-div {

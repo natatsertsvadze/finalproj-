@@ -1,5 +1,9 @@
 'use strict'
 
+//1. createnewElement-ით შევქმნა პატარა დივი და active კლასის მიხედვით შეინაცვლოს infoBts2-ში
+//2. ბურგერში რომ გადავალ მანდ პლანეტებზე დაჭერისას გადავყავდე საკუთარ გვერდზე
+//3. სამი ღილაკიდან ერთი ინიშნებოდეს ფერის მიხედვით 
+
 
 const API_URL = "https://planets-api.vercel.app/api/v1/planets/"
 const WIKIPEDIA_API_URL =  "https://en.wikipedia.org/wiki/"
@@ -25,6 +29,13 @@ const planetsList = document.querySelector(".planets-list")
 const selectedDivs = document.querySelectorAll(".selected-divs")
 const planetsBurger = document.querySelectorAll (".planetss-2")
 const planetName = document.querySelector(".planet-name")
+const planetsLink = document.querySelectorAll (".planets-link")
+const overviewBtn2 = document.querySelector ("#overview-btn2")
+const  structureBtn2= document.querySelector ("#structure-btn2")
+const  surfaceBtn2= document.querySelector ("#surface-btn2")
+const infoBts2 = document.querySelectorAll (".info-bts")
+const infoBtsList = document.querySelector ("info-bts-list")
+
 
 
 const getPlanets = async (user) => {
@@ -43,12 +54,12 @@ const getPlanets = async (user) => {
         <p class="paragraph">${data.overview.content}</p>`
 
         overviewBtn.addEventListener ("click", () => {
-            planetImg.innerHTML = `
+        planetImg.innerHTML = `
         <img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>`
         planetDescription.innerHTML = `
         <h1 class="planet-name">${data.name} </h1>
         <p class="paragraph"> ${data.overview.content} <h1>`
-        })
+         })
 
          structureBtn.addEventListener ("click", () => {
         planetImg.innerHTML = `
@@ -59,18 +70,48 @@ const getPlanets = async (user) => {
          })
 
          geologyBtn.addEventListener("click", () => {
-            planetImg.innerHTML = `
-            <div><img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>
-            <img class="geology-img" src="${data.images.geology}" alt = "image of the planet"/></div>`
-            planetDescription.innerHTML = `
-            <h1 class="planet-name">${data.name}</h1>
-            <p class="paragraph">${data.geology.content}<h1>`
+        planetImg.innerHTML = `
+        <div><img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>
+        <img class="geology-img" src="${data.images.geology}" alt = "image of the planet"/></div>`
+        planetDescription.innerHTML = `
+        <h1 class="planet-name">${data.name}</h1>
+        <p class="paragraph">${data.geology.content}<h1>`
          })
 
-         for(let i=0; i< infoButtons.length; i++) { 
+        overviewBtn2.addEventListener("click", () => {
+        planetImg.innerHTML = `
+        <img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>`
+        planetDescription.innerHTML = `
+        <h1 class="planet-name">${data.name} </h1>
+        <p class="paragraph"> ${data.overview.content} <h1>`
+         })
+
+        structureBtn2.addEventListener ("click", () => {
+        planetImg.innerHTML = `
+        <img class="planet-img" src="${data.images.internal}" alt = "image of the planet"/>`
+        planetDescription.innerHTML = `
+        <h1 class="planet-name">${data.name}</h1>
+        <p class="paragraph">${data.structure.content} <h1>`
+         })
+
+         surfaceBtn2.addEventListener("click", () => {
+        planetImg.innerHTML = `
+        <div><img class="planet-img" src="${data.images.planet}" alt = "image of the planet"/>
+        <img class="geology-img" src="${data.images.geology}" alt = "image of the planet"/></div>`
+        planetDescription.innerHTML = `
+        <h1 class="planet-name">${data.name}</h1>
+        <p class="paragraph">${data.geology.content}<h1>`
+         })
+
+         for(let i=0; i<infoButtons.length; i++) { 
             infoButtons[i].addEventListener ("click",  () => {
-                document.querySelector(".clicked")?.classList.remove("clicked")
+                document.querySelector(".clicked")?.classList.remove("clicked") 
                 infoButtons[i].classList.add("clicked")
+// 3.
+                if (infoButtons[i].classList.contains("clicked")) {
+                    infoButtons[i].style.backgroundColor = data.color
+                } ///////////////////////////
+
 
                 wikipedia.addEventListener ('click', () => {
                     wikipedia.href = data.overview.source
@@ -82,14 +123,43 @@ const getPlanets = async (user) => {
                     } else if (infoButtons[i].classList.contains("clicked") && infoButtons[i].textContent.includes("SURFACE GEOLOGY")) {
                         wikipedia.href = data.geology.source
                     }
-                 })
-            })
-        }
+
+                })})
+            
+
+            }
 
 
- 
-        } 
-         
+                                            for(let a=0; a<infoBts2.length; a++) {
+                                            infoBts2[a].addEventListener('click', () => {
+                                                document.querySelector("active")?.classList.remove("active")
+                                                infoBts2[a].classList.add("active")
+                                                                            wikipedia.addEventListener ('click', ()=> {
+                            if(infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes ("OVERVIEW")) {
+                                wikipedia.href = data.overview.source
+                            } else if (infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes("STURCTURE")) {
+                                wikipedia.href = data.structure.source
+                            } else if (infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes("SURFACE")) {
+                                wikipedia.href = data.geology.source //////////
+                            }})
+                        })}
+
+// 1.
+                            // const activeDiv = document.createElement ("div")
+                            // activeDiv.style.width = "60px"
+                            // activeDiv.style.height = "4px"
+                            // activeDiv.backgroundColor = "data.color"
+                            // if(planets[i].classList.contains("activeDiv")) {
+                            //     infoBtsList.append(activeDiv)
+                            //             } //პატარა ვიუპორტზე გამოჩნდეს მონიშნული სამი ღილაკის 
+
+
+
+
+
+
+
+                }
          catch (error) {
             console.log(error)
         }
@@ -98,11 +168,16 @@ getPlanets("mercury")
 
 
 
+
+
 for (let i=0; i<planets.length; i++) {
     planets[i].addEventListener('click', () => {
         getPlanets(planets[i].textContent) 
         document.querySelector(".active")?.classList.remove("active")
         planets[i].classList.add("active")
+
+        
+        
         if (planets[i].classList.contains("active") && planets[i].textContent === "MERCURY") {
             planets[i].style.borderTopColor = "rgb(65, 158, 187)" 
         } else if (planets[i].classList.contains("active") && planets[i].textContent === "VENUS") {
@@ -122,7 +197,21 @@ for (let i=0; i<planets.length; i++) {
         } 
                     }
         )
+
+// 2.
+        for(let i=0; i<planetsBurger.length; i++) {
+            planetsBurger[i].addEventListener('click', () => {
+                document.innerHTML.style.backgroundColor = "red"
+                        })} ///////////////////////////////////
+
+
                     }
+                    
+                                                       // for(let i=0; i<planetsLink.length; i++) { 
+                    //     planetsLink[i].addEventListener('click', () => {
+                    //         planetsLink[i].href = data(planetsLink[i].textContent)
+                    //     })
+                    // } /////////////////////////////////////////////////////
 
 
 
@@ -149,5 +238,6 @@ const headerTitle = document.querySelector(".header-title")
                 burger.style.opacity = "1"
              }
         })
+
 
 
