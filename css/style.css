@@ -31,7 +31,7 @@ header {
 .planetss.active {
     border-top-width: 4px;
     border-top-style: solid;
-    border-top-color:  rgb(65, 158, 187);
+    /* border-top-color:  rgb(65, 158, 187); */
     border-top: none;
 }
 .planetss {
@@ -110,12 +110,11 @@ header {
     justify-content: space-between;
     font-weight: 700;
 }
-.info-bts.active.rectangle {
-    width: 80px;
-    height: 4px; 
-    margin-top: 17px;
+.info-bts.active {
+    border-bottom: 4px solid;
+    padding-bottom: 17px;
+    display: inline-block;
 }
-
 /* /header */
 /* main */
 .main-img {
