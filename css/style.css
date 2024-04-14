@@ -110,6 +110,12 @@ header {
     justify-content: space-between;
     font-weight: 700;
 }
+.info-bts.active.rectangle {
+    width: 80px;
+    height: 4px; 
+    margin-top: 17px;
+}
+
 /* /header */
 /* main */
 .main-img {
@@ -174,9 +180,6 @@ header {
     color: white;
     background-color: none;
 }
-/* .information-buttons.clicked {
-    background-color: gray;
-} */
 
 .information-buttons:hover{background-color:gray}
 

@@ -1,8 +1,7 @@
 'use strict'
 
-//1. createnewElement-ით შევქმნა პატარა დივი და active კლასის მიხედვით შეინაცვლოს infoBts2-ში
+//1. მონიშნულ ღილაკს დაედოს პატარა დივი .rectangle. სხვაზე დაჭერისას გადავიდეს სხვაზე
 //2. ბურგერში რომ გადავალ მანდ პლანეტებზე დაჭერისას გადავყავდე საკუთარ გვერდზე
-//3. სამი ღილაკიდან ერთი ინიშნებოდეს ფერის მიხედვით 
 
 
 const API_URL = "https://planets-api.vercel.app/api/v1/planets/"
@@ -35,6 +34,8 @@ const  structureBtn2= document.querySelector ("#structure-btn2")
 const  surfaceBtn2= document.querySelector ("#surface-btn2")
 const infoBts2 = document.querySelectorAll (".info-bts")
 const infoBtsList = document.querySelector ("info-bts-list")
+const selectedDiv = document.querySelector ("#selected-div")
+const rectangle = document.querySelectorAll (".rectangle")
 
 
 
@@ -107,10 +108,14 @@ const getPlanets = async (user) => {
             infoButtons[i].addEventListener ("click",  () => {
                 document.querySelector(".clicked")?.classList.remove("clicked") 
                 infoButtons[i].classList.add("clicked")
-// 3.
+
+                for (let j = 0; j < infoButtons.length; j++) {
+                    if (i != j) infoButtons[j].style.backgroundColor = ""
+                }
+
                 if (infoButtons[i].classList.contains("clicked")) {
                     infoButtons[i].style.backgroundColor = data.color
-                } ///////////////////////////
+                } 
 
 
                 wikipedia.addEventListener ('click', () => {
@@ -130,11 +135,88 @@ const getPlanets = async (user) => {
             }
 
 
-                                            for(let a=0; a<infoBts2.length; a++) {
-                                            infoBts2[a].addEventListener('click', () => {
-                                                document.querySelector("active")?.classList.remove("active")
-                                                infoBts2[a].classList.add("active")
-                                                                            wikipedia.addEventListener ('click', ()=> {
+         for(let a=0; a<infoBts2.length; a++) {
+            infoBts2[a].addEventListener('click', () => {
+
+                document.querySelector(".active")?.classList.remove("active")
+                infoBts2[a].classList.add("active")
+
+                    document.querySelector(".rectangle")?.classList.remove("rectangle")
+                    infoBts2[a].classList.add("rectangle")
+
+                    const infoBtsActive = document.querySelector(".info-bts.active")
+// 1.
+                    // if(infoBts2[a].classList.contains("rectangle")) {
+                    //     infoBtsActive.style.display = "inline-block" 
+                    // }   else   {infoBtsActive.style.display = "none"}
+
+
+
+                    infoBtsActive.style.backgroundColor = data.color
+
+                    // for (let l = 0; l < infoBts2.length; l++) {
+                    //     if (a != l) infoBtsActive.style.display = "none"
+                    // }
+                    
+                    //     if (infoBtsActive.classList.contains("rectangle")) {
+                    //  let activeDiv = document.createElement ("div")
+                    //  activeDiv.style.width = "100%"
+                    //  activeDiv.style.height = "4px"
+                    //  activeDiv.style.marginTop = "20px"
+                    //  activeDiv.style.backgroundColor = data.color
+                    //  infoBtsActive.append(activeDiv)
+                    //     }
+                        // for (let p = 0; p < infoBts2.length; p++) {
+                        //     if (a != p) infoBts2[a].style.backgroundColor = "red"
+                        // }
+
+        
+
+                    // const infoBts2ActiveRectangle = document.querySelector (".info-bts.active.rectangle")
+                    // infoBts2ActiveRectangle.style.height = "4px"
+                    // infoBts2ActiveRectangle.style.marginTop = "20px"
+                    // infoBts2ActiveRectangle.style.backgroundColor = data.color
+
+
+                    // for(let e=0; e<infoBts2.length; e++) {
+                    //     if (e!=a) infoBts2ActiveRectangle.style.display = "none"
+                    // }
+
+
+                    // if(infoBts2.classList.contains("active.rectangle")) {
+                    //     infoBts2[a].append(infoBts2ActiveRectangle)
+                    // }
+                    
+
+
+
+
+                    // if(infoBts2[a].classList.contains("active")) {
+                    // rectangle[w].style.display = "flex"
+                    // }
+                
+
+
+
+
+
+
+                    //  const activeDiv = document.createElement ("div")
+                    //  activeDiv.style.width = "100%"
+                    //  activeDiv.style.height = "4px"
+                    //  activeDiv.style.backgroundColor = data.color
+
+                    //  for (let k = 0; k < infoBts2.length; k++) {
+                    //     if (a != k) activeDiv.remove()
+                    // }
+
+                                // if(infoBts2[a].classList.contains("active")) {
+                                //     infoBts2[a].append(activeDiv)
+                                // } 
+                                                
+
+                                                
+                            wikipedia.addEventListener ('click', ()=> {
                             if(infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes ("OVERVIEW")) {
                                 wikipedia.href = data.overview.source
                             } else if (infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes("STURCTURE")) {
@@ -142,21 +224,8 @@ const getPlanets = async (user) => {
                             } else if (infoBts2[a].classList.contains("active") && infoBts2[a].textContent.includes("SURFACE")) {
                                 wikipedia.href = data.geology.source //////////
                             }})
-                        })}
-
-// 1.
-                            // const activeDiv = document.createElement ("div")
-                            // activeDiv.style.width = "60px"
-                            // activeDiv.style.height = "4px"
-                            // activeDiv.backgroundColor = "data.color"
-                            // if(planets[i].classList.contains("activeDiv")) {
-                            //     infoBtsList.append(activeDiv)
-                            //             } //პატარა ვიუპორტზე გამოჩნდეს მონიშნული სამი ღილაკის 
-
-
-
-
-
+                        })
+                        }
 
 
                 }
